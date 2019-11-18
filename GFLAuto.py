@@ -39,3 +39,13 @@ if adb.init():
 else:
     Logger.log_error('Unable to connect to the service.')
     sys.exit()
+
+while True:
+
+    Utils.update_screen()
+
+    if Utils.find("ls_completed"):
+        Utils.touch_randomly()
+        Logger.log_msg("Logistic Mission finished")
+    if Utils.find_and_touch("ls_ok_restart"):
+        Logger.log_msg("Restarting Logistic Mission")
