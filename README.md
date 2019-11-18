@@ -22,7 +22,11 @@ Tested and used on Windows 10 with Nox 6.3.0.2, Android 5.1 @ 60fps. If it does 
 
 ## Contact info
 If you have any problem with the program contact freely with me:
+
 Discord: Kurutsu Karen#4040
+
 email: kurutsukarenal@gmail.com
+
 Twitter: @josufh_
+
 Or open an [Issue](https://github.com/KurutsuKaren/GFLAuto/issues)
