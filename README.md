@@ -16,3 +16,6 @@ Tested and used on Windows 10 with Nox 6.3.0.2, Android 5.1 @ 60fps. If it does 
 3. Enable adb debugging on your emulator, on Nox you might also need to enable root; or phone.
 4. Change config.ini's IP:PORT to 127.0.0.1 and your emulator's adb port, then change the rest to your likings. If you are using your own phone/device for the bot, enable debbuging on your device and change IP:PORT to PHONE.
 5. Run `GFLAuto` using the command `python GFLAuto.py`.
+
+#### Recommendations
+1. Create a separate `config-local.ini` file and change its values as you like so when there's an update your configuration doesn't chage to default on `config.ini`. To use you own config file just run the program with `python GFLAuto.py -c config-local.ini`.
