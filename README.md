@@ -1,0 +1,2 @@
+# GFLAuto
+Girls' Frontline bot
