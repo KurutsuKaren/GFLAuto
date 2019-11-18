@@ -19,3 +19,10 @@ Tested and used on Windows 10 with Nox 6.3.0.2, Android 5.1 @ 60fps. If it does 
 
 #### Recommendations
 1. Create a separate `config-local.ini` file and change its values as you like so when there's an update your configuration doesn't chage to default on `config.ini`. To use you own config file just run the program with `python GFLAuto.py -c config-local.ini`.
+
+## Contact info
+If you have any problem with the program contact freely with me:
+Discord: Kurutsu Karen#4040
+email: kurutsukarenal@gmail.com
+Twitter: @josufh_
+Or open an [Issue](https://github.com/KurutsuKaren/GFLAuto/issues)
