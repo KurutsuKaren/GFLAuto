@@ -49,7 +49,8 @@ if args.test:
         Logger.log_success('Success')
     else:
         Logger.log_error('Error')
-        sys.exit()
+    
+    sys.exit()
 
 while True:
 
