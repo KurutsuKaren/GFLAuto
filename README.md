@@ -1,5 +1,12 @@
 # GFLAuto
-At the moment it just completes and start Logistic Support missions. Scripts from `util` folder and `GFLAuto.py` (modified version of `ALAuto.py`) are copies from [ALAuto](https://github.com/Egoistically/ALAuto).  
+This bot is now under maintenance, you should not use it if you don't know what you are doing.
+To-do: automating(?) enhance system BIG BRAIN MOMENT
+
+Features:
+* Restarts on-going Logistic Support missions.
+* Farms first map from Singularity event.
+
+Scripts from `util` folder and `GFLAuto.py` (modified version of `ALAuto.py`) are copies from [ALAuto](https://github.com/Egoistically/ALAuto).  
 
 **This bot was made for EN server, other servers won't work with current assets.**
 
