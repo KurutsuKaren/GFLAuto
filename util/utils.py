@@ -27,7 +27,6 @@ class Region(object):
         self.h = h
 
 screen = None
-last_ocr = ''
 
 class Utils(object):
 
@@ -273,3 +272,11 @@ class Utils(object):
             index of where it is in the list of coordinates
         """
         return spatial.KDTree(coords).query(coord)
+
+    @classmethod
+    def wait_till_find_touch(cls, image):
+        while not cls.find_and_touch(image): cls.update_screen()
+
+    @classmethod
+    def wait_till_find(cls, image):
+        while not cls.find(image): cls.update_screen()

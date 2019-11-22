@@ -3,7 +3,8 @@ import argparse
 from datetime import datetime, timedelta
 from util.adb import Adb
 from util.config import Config
-from util.utils import Utils
+from util.utils import Utils, Region
+from modules.combat import Combat
 from util.logger import Logger
 
 # check run-time args
@@ -52,8 +53,54 @@ if args.test:
     
     sys.exit()
 
-while True:
+Utils.update_screen()
+Combat.singularity(0, 1)
+sys.exit()
 
+'''
+Utils.script_sleep(1)
+Utils.touch_randomly(regions["singularity"])
+Logger.log_msg("Entering Singularity event map")
+Utils.update_screen()
+while not Utils.find("singularity_in"):
+    Utils.update_screen()
+Utils.touch_randomly(regions["map"])
+Utils.script_sleep(1)
+Utils.touch_randomly(regions["start"])
+Logger.log_msg("Starting operation")
+while not Utils.find("select_operation"):
+    Utils.update_screen()
+Utils.touch_randomly(regions["com1"])
+Utils.script_sleep(0)
+Utils.touch_randomly(regions["ok"])
+Utils.script_sleep(0)
+Utils.touch_randomly(regions["ok"])
+Utils.script_sleep(2)
+Utils.touch_randomly(regions["com1"])
+Utils.touch_randomly(regions["enemy1"])
+while not Utils.find("leader"):
+    Utils.update_screen()
+Utils.touch_randomly()
+Utils.script_sleep(2)
+Utils.touch_randomly(Region(1900, 100, 10, 10))
+Utils.touch_randomly(Region(1900, 100, 10, 10))
+Utils.script_sleep(1)
+Utils.touch_randomly(regions["echelon1"])
+Utils.touch_randomly(regions["enemy2"])
+Utils.script_sleep(2)
+Utils.swipe(450, 850, 100, 850, 500)
+while not Utils.find("leader"):
+    Utils.update_screen()
+Utils.touch_randomly()
+Utils.script_sleep(2)
+Utils.touch_randomly(Region(1900, 100, 10, 10))
+Utils.touch_randomly(Region(1900, 100, 10, 10))
+Utils.script_sleep(1)
+
+'''
+
+'''
+while True:
     Utils.update_screen()
 
     if Utils.find("ls_completed"):
@@ -61,3 +108,4 @@ while True:
         Logger.log_msg("Logistic Mission finished")
     if Utils.find_and_touch("ls_ok_restart"):
         Logger.log_msg("Restarting Logistic Mission")
+'''
