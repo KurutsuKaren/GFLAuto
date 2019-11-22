@@ -77,4 +77,4 @@ class Adb(object):
 
     @staticmethod
     def screenshot():
-        subprocess.call("adb shell screencap -p | perl -pe 's/\\x0D\\x0A/\\x0A/g' > screen.png", shell=True)
+        subprocess.call("adb shell screencap -p | perl -pe 's/\\x0D\\x0A/\\x0A/g' > assets/not_processed/screen.png", shell=True)
