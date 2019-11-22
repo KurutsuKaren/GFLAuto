@@ -1,11 +1,13 @@
 from util.utils import Region, Utils
 from util.logger import Logger
+from modules.factory import Factory
 
 gen_regions = {
     'combat': Region(1400, 700, 0, 0),
     'com': Region(950, 550, 0, 0),
     'ok': Region(1800, 1000, 0, 0),
-    'planning_mode': Region(100, 880, 0, 0)
+    'planning_mode': Region(100, 880, 0, 0),
+    'return': Region(50, 50, 0, 0)
 }
 
 regions = {
@@ -15,24 +17,19 @@ regions = {
 }
 
 class Combat(object):
-
-    clears = 0
-
     @staticmethod
     def swipe_top_left():
         Utils.swipe(50, 200, 850, 1000, 1000)
         Utils.swipe(50, 200, 850, 1000, 1000)
 
     @staticmethod
-    def singularity(map, count):
-        Combat.clears = count
+    def singularity(map):
         Utils.touch_randomly(gen_regions["combat"])
         Utils.wait_till_find_touch("singularity_menu")
         Utils.wait_till_find("singularity_in")
         Logger.log_info("Inside Singularity")
         Combat.swipe_top_left()
 
-        Logger.log_msg("Starting {} clears on {}".format(count, map))
         if map == 0:
             Combat.map0()
 
@@ -49,10 +46,14 @@ class Combat(object):
 
     @staticmethod
     def map0():
-        Logger.log_info("{} clears left".format(Combat.clears))
         Utils.swipe(1600, 700, 700, 700, 1000)
         Utils.touch_randomly(regions["starting_point"])
         Utils.touch_randomly(regions["start0"])
+        Utils.script_sleep(2)
+        Utils.update_screen()
+        if Utils.find_and_touch("dock_full"):
+            Factory.enhance()
+            return 1
         Utils.wait_till_find("select_operation")
         Logger.log_msg("Deploying echelon")
         Combat.deploy(gen_regions["com"], True)
@@ -65,7 +66,6 @@ class Combat(object):
         Utils.script_sleep(5)
         Utils.wait_till_find("planning_mode")
         Logger.log_msg("Map finished")
-        Combat.clears -= 1  
         Utils.touch_randomly(gen_regions["ok"])
         Utils.wait_till_find_touch("result_screen")
         Utils.script_sleep(2)
@@ -75,6 +75,6 @@ class Combat(object):
         Utils.script_sleep(1)
         Utils.touch_randomly(gen_regions["ok"])
         Utils.wait_till_find("singularity_in")
-        Combat.swipe_top_left()
-        if Combat.clears > 0: Combat.map0()
-        else: Logger.log_success("Clears done!")
+        Utils.touch_randomly(gen_regions["return"])
+        Utils.wait_till_find("test")
+        return 0

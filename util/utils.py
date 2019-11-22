@@ -82,6 +82,8 @@ class Utils(object):
             else:
                 screen = cv2.imdecode(numpy.fromstring(Adb.exec_out('screencap -p'), dtype=numpy.uint8), 0)
 
+        return screen
+
     @staticmethod
     def wait_update_screen(time=None):
         """Delayed update screen.
@@ -96,7 +98,7 @@ class Utils(object):
         Utils.update_screen()
 
     @staticmethod
-    def find(image, similarity=DEFAULT_SIMILARITY):
+    def find(image, similarity=DEFAULT_SIMILARITY, args=False):
         """Finds the specified image on the screen
 
         Args:
@@ -107,7 +109,10 @@ class Utils(object):
         Returns:
             Region: region object containing the location and size of the image
         """
-        template = cv2.imread('assets/{}.png'.format(image), 0)
+        if args:
+            template = image
+        else:
+            template = cv2.imread('assets/{}.png'.format(image), 0)
         width, height = template.shape[::-1]
         match = cv2.matchTemplate(screen, template, cv2.TM_CCOEFF_NORMED)
         value, location = cv2.minMaxLoc(match)[1], cv2.minMaxLoc(match)[3]
@@ -280,3 +285,7 @@ class Utils(object):
     @classmethod
     def wait_till_find(cls, image):
         while not cls.find(image): cls.update_screen()
+
+    @staticmethod
+    def crop(img, x, y, w, h):
+        return img[y:y+h, x:x+w]

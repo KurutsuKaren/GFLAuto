@@ -1,10 +1,9 @@
 # GFLAuto
-This bot is now under maintenance, you should not use it if you don't know what you are doing.  
-To-do: automating(?) enhance system BIG BRAIN MOMENT
+Girls' Frontline early version bot.
 
 Features:
 * Restarts on-going Logistic Support missions.
-* Farms first map from Singularity event.
+* Farms first map from Singularity event, when Armory is full enhances Girls prioritizing echelon 1 guns (it only uses 2 star guns).
 
 Scripts from `util` folder and `GFLAuto.py` (modified version of `ALAuto.py`) are copies from [ALAuto](https://github.com/Egoistically/ALAuto).  
 
