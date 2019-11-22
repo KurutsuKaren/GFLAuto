@@ -1,4 +1,6 @@
 config-local.ini
+screen.png
+not_processed
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
