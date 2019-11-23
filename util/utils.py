@@ -288,4 +288,5 @@ class Utils(object):
 
     @staticmethod
     def crop(img, x, y, w, h):
+        cv2.imwrite("crop.png", img[y:y+h, x:x+w])
         return img[y:y+h, x:x+w]

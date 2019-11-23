@@ -32,7 +32,7 @@ class Factory(object):
         main = Utils.crop(main, 1634, 522, 278, 218)
         
         Utils.touch_randomly(regions["ok"])
-        Utils.script_sleep(0)
+        Utils.script_sleep(2)
 
         Utils.update_screen()
         if not Utils.find(main, 0.95, True):
@@ -41,6 +41,7 @@ class Factory(object):
             Utils.touch_randomly(regions["ok"])
             Utils.script_sleep(0)
             Utils.touch_randomly(regions["ok"])
+            Utils.script_sleep(1)
             Factory.enhance()
         else:
             Utils.touch_randomly(regions["return"])

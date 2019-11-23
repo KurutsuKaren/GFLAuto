@@ -54,17 +54,20 @@ if args.test:
     
     sys.exit()
 
+'''Combat.test()'''
+
 if config.feature == 'Singularity':
     clears = config.iterations
 
     Utils.update_screen()
     while clears > 0:
+        Logger.log_success("{} clears to finish.".format(clears))
         if Combat.singularity(0) == 0:
-            clears -= 1
-        '''if clears % 2 == 0:
-            Factory.factory()
-            Factory.enhance()
-        '''
+            clears = clears - 1
+        else:
+            Logger.log_msg("Enhanced")
+    Logger.log_success("Finished all clears. Closing program.")
+
 if config.feature == 'Logistic':
     while True:
         Utils.update_screen()

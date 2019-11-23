@@ -1,6 +1,7 @@
 from util.utils import Region, Utils
 from util.logger import Logger
 from modules.factory import Factory
+from util.order import Order
 
 gen_regions = {
     'combat': Region(1400, 700, 0, 0),
@@ -18,6 +19,13 @@ regions = {
 
 class Combat(object):
     @staticmethod
+    def test():
+        r = Order("combat.txt")
+        print(r.nextOrder())
+        print(r.nextOrder())
+        print(r.nextOrder())
+
+    @staticmethod
     def swipe_top_left():
         Utils.swipe(50, 200, 850, 1000, 1000)
         Utils.swipe(50, 200, 850, 1000, 1000)
@@ -30,8 +38,7 @@ class Combat(object):
         Logger.log_info("Inside Singularity")
         Combat.swipe_top_left()
 
-        if map == 0:
-            Combat.map0()
+        return Combat.map()
 
     @staticmethod
     def deploy(com, start=False):
@@ -45,7 +52,7 @@ class Combat(object):
             Utils.script_sleep(2)
 
     @staticmethod
-    def map0():
+    def map():
         Utils.swipe(1600, 700, 700, 700, 1000)
         Utils.touch_randomly(regions["starting_point"])
         Utils.touch_randomly(regions["start0"])
@@ -75,6 +82,7 @@ class Combat(object):
         Utils.script_sleep(1)
         Utils.touch_randomly(gen_regions["ok"])
         Utils.wait_till_find("singularity_in")
+        Utils.script_sleep(2)
         Utils.touch_randomly(gen_regions["return"])
         Utils.wait_till_find("test")
         return 0
