@@ -3,7 +3,7 @@ Girls' Frontline early version bot.
 
 Features:
 * Restarts on-going Logistic Support missions.
-* Farms first map from Singularity event, when Armory is full enhances Girls prioritizing echelon 1 guns (it only uses 2 star guns).
+* Farms first map from Singularity event, when Armory is full enhances Girls prioritizing echelon 1 guns (it only uses 2 star guns), **Enhancement procedure may bug, please contact me if that's the case**.
 
 Scripts from `util` folder and `GFLAuto.py` (modified version of `ALAuto.py`) are copies from [ALAuto](https://github.com/Egoistically/ALAuto).  
 
