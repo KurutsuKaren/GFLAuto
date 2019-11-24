@@ -1,0 +1,6 @@
+tap 1400 700
+wait_find_touch singularity_menu
+wait_find singularity_in
+swipe_topleft
+log_info Inside_Singularity
+end

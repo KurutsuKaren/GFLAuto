@@ -27,19 +27,14 @@ class Factory(object):
         Utils.touch_randomly(gun)
         Utils.wait_till_find_touch("select_character_2")
         Utils.script_sleep(1)
-
-        main = Utils.update_screen()
-        main = Utils.crop(main, 1634, 522, 278, 218)
-        
+        main = Utils.crop(Utils.update_screen(), 1644, 574, 264, 162)
         Utils.touch_randomly(regions["ok"])
         Utils.script_sleep(2)
-
-        Utils.update_screen()
         if not Utils.find(main, 0.95, True):
             Utils.touch_randomly(regions["ok"])
-            Utils.script_sleep(0)
+            Utils.script_sleep(1)
             Utils.touch_randomly(regions["ok"])
-            Utils.script_sleep(0)
+            Utils.script_sleep(1)
             Utils.touch_randomly(regions["ok"])
             Utils.script_sleep(1)
             Factory.enhance()

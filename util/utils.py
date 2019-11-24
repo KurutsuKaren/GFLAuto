@@ -109,6 +109,7 @@ class Utils(object):
         Returns:
             Region: region object containing the location and size of the image
         """
+        Utils.update_screen()
         if args:
             template = image
         else:
@@ -193,6 +194,11 @@ class Utils(object):
         """
         Adb.shell("input swipe {} {} {} {} {}".format(x1, y1, x2, y2, ms))
         cls.update_screen()
+
+    @classmethod
+    def swipe_top_left(cls):
+        Utils.swipe(50, 200, 850, 1000, 1000)
+        Utils.swipe(50, 200, 850, 1000, 1000)
 
     @classmethod
     def find_and_touch(cls, image, similarity=DEFAULT_SIMILARITY):
@@ -280,13 +286,12 @@ class Utils(object):
 
     @classmethod
     def wait_till_find_touch(cls, image):
-        while not cls.find_and_touch(image): cls.update_screen()
+        while not cls.find_and_touch(image): x = None
 
     @classmethod
     def wait_till_find(cls, image):
-        while not cls.find(image): cls.update_screen()
+        while not cls.find(image): x = None
 
     @staticmethod
     def crop(img, x, y, w, h):
-        cv2.imwrite("crop.png", img[y:y+h, x:x+w])
         return img[y:y+h, x:x+w]

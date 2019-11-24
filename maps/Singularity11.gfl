@@ -1,0 +1,28 @@
+swipe 1600 700 700 700
+tap 1200 250
+tap 1800 950
+wait 2
+find_touch dock_full
+wait_find combat_summary
+deploy start
+tap 950 550
+tap 100 880
+swipe 314 150 950 1050
+swipe 314 150 314 500
+tap 700 400
+tap 1800 1000
+wait 5
+wait_find planning_mode
+tap 1800 1000
+wait_find_touch result_screen
+wait 2
+tap 1800 1000
+wait 2
+tap 1800 1000
+wait 2
+tap 1800 1000
+wait_find singularity_in
+wait 2
+tap 50 50
+wait_find test
+end

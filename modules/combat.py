@@ -18,71 +18,14 @@ regions = {
 }
 
 class Combat(object):
-    @staticmethod
-    def test():
-        r = Order("combat.txt")
-        print(r.nextOrder())
-        print(r.nextOrder())
-        print(r.nextOrder())
+    operation = []
 
-    @staticmethod
-    def swipe_top_left():
-        Utils.swipe(50, 200, 850, 1000, 1000)
-        Utils.swipe(50, 200, 850, 1000, 1000)
+    def __init__(self, operation):
+        Logger.log_info("Starting combat on {} chapter {} operation {}.".format(operation[0], operation[1], operation[2]))
+        self.operation = operation
 
-    @staticmethod
-    def singularity(map):
-        Utils.touch_randomly(gen_regions["combat"])
-        Utils.wait_till_find_touch("singularity_menu")
-        Utils.wait_till_find("singularity_in")
-        Logger.log_info("Inside Singularity")
-        Combat.swipe_top_left()
-
-        return Combat.map()
-
-    @staticmethod
-    def deploy(com, start=False):
-        Utils.touch_randomly(com)
-        Utils.wait_till_find("echelon_formation")
-        Utils.touch_randomly(gen_regions["ok"])
-        Logger.log_msg("Echelon deployed")
-        if start:
-            Utils.touch_randomly(gen_regions["ok"])
-            Logger.log_msg("Comencing operation")
-            Utils.script_sleep(2)
-
-    @staticmethod
-    def map():
-        Utils.swipe(1600, 700, 700, 700, 1000)
-        Utils.touch_randomly(regions["starting_point"])
-        Utils.touch_randomly(regions["start0"])
-        Utils.script_sleep(2)
-        Utils.update_screen()
-        if Utils.find_and_touch("dock_full"):
-            Factory.enhance()
-            return 1
-        Utils.wait_till_find("select_operation")
-        Logger.log_msg("Deploying echelon")
-        Combat.deploy(gen_regions["com"], True)
-        Utils.touch_randomly(gen_regions["com"])
-        Utils.touch_randomly(gen_regions["planning_mode"])
-        Utils.swipe(314, 150, 950, 1050, 1000)
-        Utils.swipe(314, 150, 314, 500, 1000)
-        Utils.touch_randomly(regions["enemy"])
-        Utils.touch_randomly(gen_regions["ok"])
-        Utils.script_sleep(5)
-        Utils.wait_till_find("planning_mode")
-        Logger.log_msg("Map finished")
-        Utils.touch_randomly(gen_regions["ok"])
-        Utils.wait_till_find_touch("result_screen")
-        Utils.script_sleep(2)
-        Utils.touch_randomly(gen_regions["ok"])
-        Utils.script_sleep(1)
-        Utils.touch_randomly(gen_regions["ok"])
-        Utils.script_sleep(1)
-        Utils.touch_randomly(gen_regions["ok"])
-        Utils.wait_till_find("singularity_in")
-        Utils.script_sleep(2)
-        Utils.touch_randomly(gen_regions["return"])
-        Utils.wait_till_find("test")
-        return 0
+    def goToOperation(self):
+        Logger.log_info("Going to {}.".format(self.operation[0]))
+        Order(self.operation[0])
+        combat = Order(self.operation[0] + self.operation[1] + self.operation[2])
+        return combat.result

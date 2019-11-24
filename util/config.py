@@ -19,15 +19,19 @@ class Config(object):
         Logger.log_msg("Initializing config module")
         self.config_file = config_file
         self.network = {}
-        self.feature = ''
-        self.iterations = 0
+        self.combat = False
+        self.operation = []
+        self.times = 0
+        self.logistic = False
         self.read()
 
     def read(self):
         config = configparser.ConfigParser()
         config.read(self.config_file)
         self.network['service'] = config.get('Network', 'Service')
-        self.feature = config.get('To-do', 'Feature')
-        self.iterations = config.getint('To-do', 'Times')
+        self.combat = config.getboolean('Combat', 'Enabled')
+        self.operation = config.get('Combat', 'Operation').rstrip().split(' ')
+        self.times = config.getint('Combat', 'Times')
+        self.logistic = config.getboolean('Logistic', 'Enabled')
 
         Logger.log_msg("Starting GFLAuto!")
