@@ -54,16 +54,29 @@ if args.test:
     
     sys.exit()
 
-if config.combat == True:
+def CheckLogistic():
+    Utils.script_sleep(3)
+
+    if Utils.find("ls_completed"):
+        Utils.touch_randomly()
+        Logger.log_msg("Logistic Mission finished")
+    if Utils.find_and_touch("ls_ok_restart"):
+        Logger.log_msg("Restarting Logistic Mission")
+        CheckLogistic()
+
+def CombatManager():
     clears = config.times
 
     while clears > 0:
         Logger.log_msg("{} clears to finish.".format(clears))
         combat = Combat(config.operation)
         if combat.goToOperation() == 0: clears -= 1
+        if config.logistic: CheckLogistic()
     Logger.log_success("Finished all clears. Closing program.")
 
-if config.feature == 'Logistic':
+if config.combat: CombatManager()
+
+def LogisticManager():
     while True:
         Utils.update_screen()
 
@@ -72,3 +85,6 @@ if config.feature == 'Logistic':
             Logger.log_msg("Logistic Mission finished")
         if Utils.find_and_touch("ls_ok_restart"):
             Logger.log_msg("Restarting Logistic Mission")
+    
+if config.logistic: LogisticManager()
+    

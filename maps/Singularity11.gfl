@@ -11,15 +11,14 @@ swipe 314 150 950 1050
 swipe 314 150 314 500
 tap 700 400
 tap 1800 1000
-wait 5
-wait_find planning_mode
+wait_find end_S11
 tap 1800 1000
 wait_find_touch result_screen
 wait 2
 tap 1800 1000
 wait 2
 tap 1800 1000
-wait 2
+wait_find_touch result_screen
 tap 1800 1000
 wait_find singularity_in
 wait 2

@@ -13,7 +13,7 @@ class Order(object):
         for l in f:
             self.orders.append(l.rstrip().split(' '))
         self.orders.reverse()
-        result = self.executeOrders()
+        self.result = self.executeOrders()
 
     def nextOrder(self):
         if self.orders.__len__() > 0:

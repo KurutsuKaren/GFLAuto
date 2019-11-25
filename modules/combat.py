@@ -27,5 +27,6 @@ class Combat(object):
     def goToOperation(self):
         Logger.log_info("Going to {}.".format(self.operation[0]))
         Order(self.operation[0])
+        combat = None
         combat = Order(self.operation[0] + self.operation[1] + self.operation[2])
         return combat.result
