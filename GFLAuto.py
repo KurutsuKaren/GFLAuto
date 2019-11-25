@@ -18,7 +18,7 @@ parser.add_argument('-d', '--debug',
                     help='Enables debugging logs.', action='store_true')
 parser.add_argument('-l', '--legacy',
                     help='Enables sed usage.', action='store_true')
-parser.add_argument('-t', '--test', help='Tests if device can find images', action='store_true')
+parser.add_argument('-e', '--enhance', help='Auto-enhance', action='store_true')
 args = parser.parse_args()
 
 # check args, and if none provided, load default config
@@ -43,15 +43,9 @@ else:
     Logger.log_error('Unable to connect to the service.')
     sys.exit()
 
-if args.test:
-    Logger.log_info('Run test')
-    
-    Utils.update_screen()
-    if Utils.find("test"):
-        Logger.log_success('Success')
-    else:
-        Logger.log_error('Error')
-    
+if args.enhance:
+    Factory.factory()
+    Factory.enhance()
     sys.exit()
 
 def CheckLogistic():
