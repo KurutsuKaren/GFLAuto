@@ -5,6 +5,9 @@ Features:
 * Restarts on-going Logistic Support missions.
 * Farms first map from Singularity event, when Armory is full enhances Girls prioritizing echelon 1 guns (it only uses 2 star guns), **Enhancement procedure may bug, please contact me if that's the case**.
 
+**Just realized the bot broke because they changed the way the map worked**  
+Soon I'll update it.
+
 Scripts from `util` folder and `GFLAuto.py` (modified version of `ALAuto.py`) are copies from [ALAuto](https://github.com/Egoistically/ALAuto).  
 
 **This bot was made for EN server, other servers won't work with current assets.**
